@@ -4,13 +4,13 @@ import VideoList from './VideoList'
 import axios from 'axios'
 import VideoDetail from './VideoDetail'
 import Firebase from './FireBase'
-import Config from './Config'
+import Config from './config'
 
 const App = () => {
 
-  const [videos, setVideos] = useState([])
-  const [idxVideos, setIdxVideos] = useState([])
-  const [selectedVideo, setSelectedVideo] = useState()
+  const [videos, setVideos] = useState([]);
+  const [idxVideos, setIdxVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState();
 
   const handleSubmit = (urlYoutube) => {
 
@@ -42,7 +42,7 @@ const App = () => {
 
   const handleVideoSelect = (video) => { //função desativada para evitar alguns bugs :D; Mas ela fuciona se remover os comentarios
     //setSelectedVideo(video);  
-  }
+  };
 
   const removeVideo = () =>{
     Firebase.database().ref('/videos').on('value', snapshot => {          
@@ -51,11 +51,11 @@ const App = () => {
           Firebase.database().ref(`/videos/${key}`).remove()
         }
       })
-    })
+    });
     videos.shift();
-    setVideos(videos)
+    setVideos(videos);
     setSelectedVideo(videos[0]);
-  }
+  };
 
   const removeVideoEspc = (video) => {
     let remove = window.confirm(`Deseja realmente remover '${video.snippet.title}' da playlist?`)
@@ -64,7 +64,7 @@ const App = () => {
       for( var i = 0; i < videos.length; i++){ 
         let attVideos = videos.filter((videos) => {
           return videos.id !== video.id
-        })
+        });
         setVideos(attVideos);
       }
       Firebase.database().ref('/videos').on('value', snapshot => {          
@@ -75,7 +75,7 @@ const App = () => {
         })
       })
     }
-  }
+  };
 
   useEffect(() => {
     let ref = Firebase.database().ref('/videos');
@@ -92,7 +92,7 @@ const App = () => {
       })
       }
     });
-  }, [])
+  }, []);
 
   return (
     <div className='ui container' style={{marginTop: '1em'}}>
@@ -110,6 +110,6 @@ const App = () => {
     </div>
   )
 
-}
+};
 
 export default App;
