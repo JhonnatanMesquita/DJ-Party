@@ -1,4 +1,4 @@
-# [TESTE AQUI!](https://app.jhonnatanmesquita.me/djzao/)
+# [TESTE AQUI!](https://app.jhonnatanmesquita.com.br/djzao/)
 
 # Ideia
 
